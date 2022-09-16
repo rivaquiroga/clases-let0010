@@ -1,3 +1,3 @@
-# Clases LET0010
+# Repositorio de ejemplo
 
-Materiales para las clases del curso LET0010 versión 2022.
+Este es el repositorio en que iremos dejando algunos de los materiales que desarrollaremos como ejemplo en clases.
