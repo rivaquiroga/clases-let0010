@@ -42,7 +42,7 @@ desarrollo |>
 
 ## Datos sobre `r params$pais`
 
-En el caso de `r params$pais`, la esperanza de vida a tenido la evolución que se muestra en el siguiente gráfico:
+En el caso de `r params$pais`, la esperanza de vida ha tenido la evolución que se muestra en el siguiente gráfico:
 
 ```{r}
 desarrollo |> 
