@@ -32,6 +32,7 @@ ggsave("figuras/linea-pib-chile.png", width = 10, height = 7)
 # Gráfico 2: Vamos a agregar más países y miraremos otra variable
 
 
+# Antes: si no usáramos el "pipe", tendríamos que guardar nuestros datos filtrados en un objeto intermedio antes de hacer el gráfico.
 
 cono_sur <- filter(desarrollo, pais %in% c("Chile", "Argentina", "Uruguay"))
 
