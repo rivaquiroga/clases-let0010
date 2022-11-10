@@ -1,0 +1,187 @@
+---
+title: "Un informe muy relevante"
+author: "Nombre Apellido"
+format: 
+  revealjs:
+    incremental: true
+    theme: default
+lang: es
+---
+
+```{r}
+#| echo: false
+#| message: false
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| cache: true
+desarrollo <- read_csv("https://raw.githubusercontent.com/rivaquiroga/clases-let0010/main/datos/datos-desarrollo.csv")
+
+
+```
+
+## Datos de desarrollo sobre Chile
+
+La base de datos incluye observaciones para las variables esperanza de vida, pib y población entre los años `r min(desarrollo$anio)` y `r max(desarrollo$anio)`.
+
+## Evolución del PIB per cápita
+
+El siguiente gráfico muestra la evolución en este periodo del pib per cápita en dólares
+
+```{r}
+filter(desarrollo, pais == "Chile") |> 
+  ggplot(aes(x = anio, y = pib)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0,14000))
+```
+
+## Datos del último año
+
+Los datos disponibles para el año `r max(desarrollo$anio)` se presentan en la siguiente tabla
+
+```{r}
+filter(desarrollo, anio == max(desarrollo$anio), pais == "Chile") |> 
+  select("esperanza de vida" = esperanza_vida, "pib per cápita" = pib, "población" = poblacion) |> 
+  gt::gt()
+
+```
+
+## Una lista de cosas
+
+Esto es solo una excusa para poner una lista.
+
+::: {.nonincremental}
+-   Primer paso
+
+-   Segundo paso
+
+-   Tercer paso
+:::
+
+# Este un título de primer nivel
+
+## Este es un título de segundo nivel
+
+### Este es un título de tercer nivel
+
+------------------------------------------------------------------------
+
+Hola, esta es una diapositiva nueva
+
+# Otra diapositiva
+
+::: {.incremental}
+- List element A
+- List element B
+:::
+
+# Otra diapositiva
+
+:::: {.columns}
+
+::: {.column width='20%'}
+Aquí hay un poco de texto al lado izquierdo de la tabla
+:::
+
+::: {.column width='80%'}
+```{r}
+filter(desarrollo, anio == max(desarrollo$anio), pais == "Chile") |> 
+  select("esperanza de vida" = esperanza_vida, "pib per cápita" = pib, "población" = poblacion) |> 
+  gt::gt()
+
+```
+:::
+
+::::
+
+## Podemos crear alertas
+
+:::{.callout-note collapse=false appearance='default' icon=true}
+## Optional caption (note)
+- Hide callout body with 'collapse=true'
+- Remove 'collapse' to prevent expandability
+- Set appearance to 'default', 'simple' or 'minimal'
+- Remove icon with 'icon=false'
+:::
+
+## Agreguemos una alerta
+
+:::{.callout-warning collapse=false appearance='default' icon=true}
+## Optional caption (warning)
+- Hide callout body with 'collapse=true'
+- Remove 'collapse' to prevent expandability
+- Set appearance to 'default', 'simple' or 'minimal'
+- Remove icon with 'icon=false'
+:::
+
+
+## También nos permite agregar notas
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+
+filter(desarrollo, 
+       pais == "Chile") |> 
+  ggplot(aes(x = anio, 
+             y = pib)) +
+  geom_line() +
+  scale_y_continuous(
+    limits = c(0,14000)
+    )
+```
+
+::: {.notes}
+No olvidar mencionar que el eje y está en log10
+
+Mencionar que el outlier del año 2020 fue producto de la pandemia
+:::
+
+---
+
+Podemos crear "tabsets" o paneles
+
+::: {.panel-tabset}
+
+### gráfico
+
+
+```{r}
+filter(desarrollo, 
+       pais == "Chile") |> 
+  ggplot(aes(x = anio, 
+             y = pib)) +
+  geom_line() +
+  scale_y_continuous(
+    limits = c(0,14000)
+    )
+```
+
+
+### datos
+
+```{r}
+
+filter(desarrollo, pais == "Chile") %>% 
+  gt::gt()
+
+```
+
+### modelo
+
+Fórmula
+
+
+
+:::
+
+
+
+
+
