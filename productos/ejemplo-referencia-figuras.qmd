@@ -1,0 +1,63 @@
+---
+title: "Figuras: crear referencias cruzadas"
+format: 
+  html:
+    code-fold: true
+    code-summary: "código fuente"
+    fig-cap-location: top
+editor: visual
+lang: es
+bibliography: references.bib
+---
+
+Vamos a mostrar cómo crear "referencias cruzadas" para, valga la redundancia, hacer referencia a nuestras figuras en un reporte.
+
+## Los datos
+
+Para este ejemplo usaremos los datos sobre desarrollo que creamos hace algunas semanas.
+
+```{r}
+#| message: false
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+desarrollo <- read_csv(here::here("datos/datos-desarrollo.csv"))
+
+```
+
+## Algunos gráficos sobre esperanza de vida
+
+(Incluyo un párrafo mínimo solo para mostrar como funciona esto de las referencias cruzadas)
+
+En el caso de Chile, los resultados obtenidos se muestran en la @fig-espvida-cl:
+
+```{r}
+#| fig-cap: "Esperanza de vida en Chile (1990-2020)"
+#| label: fig-espvida-cl
+
+desarrollo |> 
+  filter(pais == "Chile") |> 
+  ggplot(aes(x = anio, y = esperanza_vida)) +
+  geom_line(size = 2) +
+  scale_y_continuous(limits = c(0, 85)) +
+  theme_minimal()
+```
+
+En el caso de Argentina, la esperanza de vida ha tenido la evolución que se muestra en la @fig-espvida-ar:
+
+```{r}
+#| fig-cap: "Esperanza de vida en Argentina (1990-2020)"
+#| label: fig-espvida-ar
+
+desarrollo |> 
+  filter(pais == "Argentina") |> 
+  ggplot(aes(x = anio, y = esperanza_vida)) +
+  geom_line(size = 2) +
+  scale_y_continuous(limits = c(0, 85)) +
+  theme_minimal()
+```
+
+hergher hgjkrehgreg o hrg q @fig-espvida-cl
+
+Tal como dice [@ryan2022] esto es muy importante. Algo similar piensa [@manning2014].

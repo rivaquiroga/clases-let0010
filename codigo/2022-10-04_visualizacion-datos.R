@@ -29,7 +29,8 @@ sudamerica |>
        subtitle = "países de Sudamércia",
        x = NULL,
        y = "esperanza de vida") +
-  theme_bw()
+  theme_bw() +
+  geom_hline(yintercept = 50)
 
 # si ejecutan colors() en la consola pueden ver todos los colores que R reconoce por nombre
 
@@ -88,4 +89,4 @@ sudamerica |>
   scale_color_manual(values = c("Uruguay" = "#0081a7", "Argentina" = "#f07167")) +
   labs(title = "Evolución del PIB en <b style=color:'#f07167'>Argentina</b> y <b style=color:'#0081a7'>Uruguay</b>") +
   theme_bw() +
-  theme(plot.title = element_markdown())
+  labs(x = "")
